@@ -61,6 +61,13 @@ public class CustomerServiceImpl implements CustomerService{
 		System.out.print(customerDao.findAllCustomers());
 		return customerDao.findAllCustomers();
 	}
+
+	@Override
+	public Customer findCustomerByName(String userName) {
+		// TODO Auto-generated method stub
+		
+		return this.customerDao.findCustomerByName(userName);
+	}
 	
 
 }

@@ -99,6 +99,13 @@ public class CustomerDaoImpl implements CustomerDao {
 		
 		return customers;
 	}
+
+	@Override
+	public Customer findCustomerByName(String userName) {
+		// TODO Auto-generated method stub
+		return jdbc.queryForObject("select * from tbl_customer where name=?",new CustomerRowMapper(),userName);
+		
+	}
 	
 	
 }

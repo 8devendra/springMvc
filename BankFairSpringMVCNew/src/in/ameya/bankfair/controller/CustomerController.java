@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +46,7 @@ private CustomerService service;
 		return "customer/customer";
 		
 	}
+	
 	@GetMapping("/delete")
 	public String deleteCustomerById(@RequestParam int customerId) {
 		service.deleteCustomerById(customerId);
@@ -62,6 +64,7 @@ private CustomerService service;
 		return "redirect:/customer/all";
 	}
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")//only accessable to admin 
 	@GetMapping("/update")
 	public String showUpdate(@RequestParam int customerId, Model m) {
 		Customer cust=new Customer();

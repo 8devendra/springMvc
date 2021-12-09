@@ -13,4 +13,5 @@ public interface CustomerDao {
 	Customer updateCustomerById(Customer c);
 	
 	List<Customer> findAllCustomers();
+	Customer findCustomerByName(String userName);
 }

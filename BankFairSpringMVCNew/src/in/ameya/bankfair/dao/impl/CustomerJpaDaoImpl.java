@@ -42,4 +42,10 @@ public class CustomerJpaDaoImpl implements CustomerDao {
 		return null;
 	}
 
+	@Override
+	public Customer findCustomerByName(String userName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

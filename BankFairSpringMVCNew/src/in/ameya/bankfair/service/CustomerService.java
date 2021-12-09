@@ -10,5 +10,6 @@ public interface CustomerService {
 	Customer deleteCustomerById(int id);
 	Customer updateCustomer(Customer c);
 	List<Customer> getAllCustomer();
+	Customer findCustomerByName(String userName);
 
 }

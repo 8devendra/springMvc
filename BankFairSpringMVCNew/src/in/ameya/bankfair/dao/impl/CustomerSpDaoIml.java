@@ -83,6 +83,12 @@ public class CustomerSpDaoIml implements CustomerDao {
 		return cus;
 		
 	}
+
+	@Override
+	public Customer findCustomerByName(String userName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }
