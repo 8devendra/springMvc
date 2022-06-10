@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Main" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="754a53cf-9f80-494c-b623-430823e29eaa">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="mySqlDataAdapter"/>
+	<parameter name="accountType" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select accountType ,count(1) as count from tbl_account where accountType=$P{accountType}]]>
+	</queryString>
+	<field name="accountType" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="accountType"/>
+		<property name="com.jaspersoft.studio.field.label" value="accountType"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_account"/>
+	</field>
+	<field name="count" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="count"/>
+		<property name="com.jaspersoft.studio.field.label" value="count"/>
+	</field>
+	<group name="accountType">
+		<groupExpression><![CDATA[$F{accountType}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="54" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="8" width="100" height="30" uuid="c8517779-bbb4-417a-8d15-8b5ea5f9f4c7"/>
+				<text><![CDATA[Account Type]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="8" width="100" height="30" uuid="62750b49-4eb1-4bcd-8fc0-ff7889f3e60d"/>
+				<textFieldExpression><![CDATA[$F{accountType}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="330" y="16" width="100" height="30" uuid="bc54847e-d9ca-4bca-98ca-8ae1e374055e"/>
+				<text><![CDATA[COUNT]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="16" width="100" height="30" uuid="900a5566-14eb-431c-9e55-af81e886b53e"/>
+				<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="273" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="10" width="550" height="200" uuid="4e3c2bf6-dc1a-4897-89c6-a384d9f7d3c9"/>
+				<subreportParameter name="accountType">
+					<subreportParameterExpression><![CDATA[$P{accountType}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["dtlReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

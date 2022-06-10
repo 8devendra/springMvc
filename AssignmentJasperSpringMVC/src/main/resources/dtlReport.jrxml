@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dtlReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="690c4b5e-bae7-4947-afa5-5859364ef58a">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="mySqlDataAdapter"/>
+	<subDataset name="Dataset1" uuid="05f4a48b-84b7-46a2-a340-634b7e413cb4">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="mySqlDataAdapter"/>
+		<parameter name="accountType" class="java.lang.String"/>
+		<queryString language="SQL">
+			<![CDATA[select accountNo,balance from tbl_account where accountType= $P{accountType} ]]>
+		</queryString>
+		<field name="accountNo" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="accountNo"/>
+			<property name="com.jaspersoft.studio.field.label" value="accountNo"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tbl_account"/>
+		</field>
+		<field name="balance" class="java.lang.Float">
+			<property name="com.jaspersoft.studio.field.name" value="balance"/>
+			<property name="com.jaspersoft.studio.field.label" value="balance"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tbl_account"/>
+		</field>
+		<filterExpression><![CDATA[$P{REPORT_CONNECTION}]]></filterExpression>
+	</subDataset>
+	<subDataset name="LIST" uuid="d9c4c6b6-a174-4f0a-ba5d-a8d5832af49f">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="mySqlDataAdapter"/>
+		<queryString language="SQL">
+			<![CDATA[select accountNo from tbl_account where accountType="FIX"]]>
+		</queryString>
+		<field name="accountNo" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="accountNo"/>
+			<property name="com.jaspersoft.studio.field.label" value="accountNo"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="tbl_account"/>
+		</field>
+	</subDataset>
+	<parameter name="accountType" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select accountNo,balance from tbl_account where accountType= $P{accountType}]]>
+	</queryString>
+	<field name="accountNo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="accountNo"/>
+		<property name="com.jaspersoft.studio.field.label" value="accountNo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_account"/>
+	</field>
+	<field name="balance" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="balance"/>
+		<property name="com.jaspersoft.studio.field.label" value="balance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tbl_account"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="255" splitType="Stretch">
+			<componentElement>
+				<reportElement x="448" y="49" width="100" height="30" uuid="dc0ff4dc-2d29-47d2-8ff0-ad49b6fe913e"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="LIST" uuid="4bea2ea8-41e8-4e2d-89ab-a27860cbb9f2">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="30" width="100"/>
+				</jr:list>
+			</componentElement>
+			<textField>
+				<reportElement x="174" y="103" width="100" height="30" uuid="b0b675ac-1de2-4d82-86f1-55c81c729fd7"/>
+				<textFieldExpression><![CDATA[$F{accountNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="74" y="103" width="100" height="30" uuid="9967e630-dc62-4b2d-a816-cccf7298467b"/>
+				<text><![CDATA[accountNo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="343" y="109" width="100" height="30" uuid="43d1063f-a5a3-494b-8860-03f9e8bcc3eb"/>
+				<textFieldExpression><![CDATA[$F{balance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="243" y="109" width="100" height="30" uuid="0b6f5fdf-d040-4510-8c0d-37a8654549ca"/>
+				<text><![CDATA[balance]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
