@@ -40,7 +40,8 @@ public class AccountDaoImpl implements AccountDao {
 			Account ac=new Account();
 			ac.setAccountNo(rs.getInt(1));
 			ac.setBalance(rs.getFloat(2));
-			System.out.println(ac.getAccountNo());
+			ac.setAccountType(rs.getString(3));
+	//		System.out.println(ac.getAccountNo());
 
 			return ac;
 		}
